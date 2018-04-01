@@ -1,0 +1,15 @@
+{
+  "name": "ch1",
+  "version": "1.0.0",
+  "description": "challenge 1 for react course",
+  "main": "public/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ankur shukla",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1"
+  }
+}
