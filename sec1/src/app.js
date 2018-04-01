@@ -1,16 +1,14 @@
 console.log('App.js is running!');
 
 var app = {
-  name: 'Ankur Shukla',
-  age: 26,
-  location: 'Mumbai'
+  title: 'Indecision App',
+  subtitle: 'this is a react course app',
 };
 
 var template = (
   <div>
-    <h1>{app.name}</h1>
-    <p>{app.age}</p>
-    <p>{app.location}</p>
+    <h1>{app.title}</h1>
+    <p>{app.subtitle}</p>
   </div>
 );
 

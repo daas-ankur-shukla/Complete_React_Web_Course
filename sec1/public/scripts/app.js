@@ -3,9 +3,8 @@
 console.log('App.js is running!');
 
 var app = {
-  name: 'Ankur Shukla',
-  age: 26,
-  location: 'Mumbai'
+  title: 'Indecision App',
+  subtitle: 'this is a react course app'
 };
 
 var template = React.createElement(
@@ -14,17 +13,12 @@ var template = React.createElement(
   React.createElement(
     'h1',
     null,
-    app.name
+    app.title
   ),
   React.createElement(
     'p',
     null,
-    app.age
-  ),
-  React.createElement(
-    'p',
-    null,
-    app.location
+    app.subtitle
   )
 );
 
