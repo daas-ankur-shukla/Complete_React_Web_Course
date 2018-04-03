@@ -1,27 +1,12 @@
-'use strict';
+"use strict";
 
-console.log('App.js is running!');
-
-var app = {
-  title: 'Indecision App',
-  subtitle: 'this is a react course app'
+var multiplier = {
+  multiply: function multiply(numbers, multiplyBy) {
+    return numbers.map(function (number) {
+      return number * multiplyBy;
+    });
+  }
 };
 
-var template = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    app.title
-  ),
-  React.createElement(
-    'p',
-    null,
-    app.subtitle
-  )
-);
-
-var appRoot = document.getElementById('app');
-
-ReactDOM.render(template, appRoot);
+console.log(multiplier.multiply([1, 2, 3], 4));
+console.log(multiplier.multiply([1, 2, 3], 6));
