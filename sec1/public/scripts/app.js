@@ -1,12 +1,53 @@
-"use strict";
+'use strict';
 
-var multiplier = {
-  multiply: function multiply(numbers, multiplyBy) {
-    return numbers.map(function (number) {
-      return number * multiplyBy;
-    });
-  }
+console.log('App.js is running!');
+
+var count = 0;
+
+var add = function add() {
+  count++;
+  renderApp();
 };
 
-console.log(multiplier.multiply([1, 2, 3], 4));
-console.log(multiplier.multiply([1, 2, 3], 6));
+var sub = function sub() {
+  count--;
+  renderApp();
+};
+
+var reset = function reset() {
+  count = 0;
+  renderApp();
+};
+
+var appRoot = document.getElementById('app');
+
+var renderApp = function renderApp() {
+  var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'h1',
+      null,
+      'Count: ',
+      count
+    ),
+    React.createElement(
+      'button',
+      { onClick: add },
+      '+1'
+    ),
+    React.createElement(
+      'button',
+      { onClick: sub },
+      '-1'
+    ),
+    React.createElement(
+      'button',
+      { onClick: reset },
+      'reset'
+    )
+  );
+  ReactDOM.render(template, appRoot);
+};
+
+renderApp();

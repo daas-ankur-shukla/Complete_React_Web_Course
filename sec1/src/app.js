@@ -1,17 +1,35 @@
 console.log('App.js is running!');
 
-var app = {
-  title: 'Indecision App',
-  subtitle: 'this is a react course app',
-};
+let count=0
 
-var template = (
-  <div>
-    <h1>{app.title}</h1>
-    <p>{app.subtitle}</p>
-  </div>
-);
+const add = () => {
+  count++;
+  renderApp();
+}
+
+const sub = () => {
+  count--;
+  renderApp();
+}
+
+const reset = () => {
+  count=0;
+  renderApp();
+}
+
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+const renderApp = () => {
+  var template = (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={add}>+1</button>
+      <button onClick={sub}>-1</button>
+      <button onClick={reset}>reset</button>
+    </div>
+  );
+  ReactDOM.render(template, appRoot);
+}
+
+renderApp();
