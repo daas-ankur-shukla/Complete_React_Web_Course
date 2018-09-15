@@ -17,18 +17,24 @@ const onFormSubmit = (e) => {
   renderApp();
 };
 
+const resetOptions = () => {
+  app.options = []
+  renderApp();
+};
+
 const renderApp = () => {
   const template = (
     <div>
     <h1>{app.title}</h1>
     {app.subtitle && <p>{app.subtitile}</p>}
-    <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+    <p>{app.options.length > 0 ? 'Here are your ' + app.options.length + ' options' : 'No options'}</p>
     <ol>
     {app.options.length > 0 ? app.options.map((opt) => <li key={opt.toString()}>{opt}</li>) : ''}
     </ol>
     <form onSubmit = {onFormSubmit}>
     <input type="text" name="option"/>
     <button>Add Option</button>
+    <button onClick = {resetOptions}>Reset</button>
     </form>
     </div>
   );

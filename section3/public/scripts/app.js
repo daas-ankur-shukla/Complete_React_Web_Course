@@ -19,6 +19,11 @@ var onFormSubmit = function onFormSubmit(e) {
   renderApp();
 };
 
+var resetOptions = function resetOptions() {
+  app.options = [];
+  renderApp();
+};
+
 var renderApp = function renderApp() {
   var template = React.createElement(
     'div',
@@ -36,7 +41,7 @@ var renderApp = function renderApp() {
     React.createElement(
       'p',
       null,
-      app.options.length > 0 ? 'Here are your options' : 'No options'
+      app.options.length > 0 ? 'Here are your ' + app.options.length + ' options' : 'No options'
     ),
     React.createElement(
       'ol',
@@ -57,6 +62,11 @@ var renderApp = function renderApp() {
         'button',
         null,
         'Add Option'
+      ),
+      React.createElement(
+        'button',
+        { onClick: resetOptions },
+        'Reset'
       )
     )
   );
