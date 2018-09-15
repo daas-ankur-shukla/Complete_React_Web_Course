@@ -1,25 +1,23 @@
 'use strict';
 
-console.log('App.js is running!');
+console.log('App.js is running');
 
-var count = 0;
-
-var add = function add() {
-  count++;
-  renderApp();
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in hands of a computer',
+  options: []
 };
 
-var sub = function sub() {
-  count--;
+var onFormSubmit = function onFormSubmit(e) {
+  e.preventDefault();
+  var option = e.target.elements.option.value;
+
+  if (option) {
+    app.options.push(option);
+    e.target.elements.option.value = '';
+  }
   renderApp();
 };
-
-var reset = function reset() {
-  count = 0;
-  renderApp();
-};
-
-var appRoot = document.getElementById('app');
 
 var renderApp = function renderApp() {
   var template = React.createElement(
@@ -28,25 +26,41 @@ var renderApp = function renderApp() {
     React.createElement(
       'h1',
       null,
-      'Count: ',
-      count
+      app.title
+    ),
+    app.subtitle && React.createElement(
+      'p',
+      null,
+      app.subtitile
     ),
     React.createElement(
-      'button',
-      { onClick: add },
-      '+1'
+      'p',
+      null,
+      app.options.length > 0 ? 'Here are your options' : 'No options'
     ),
     React.createElement(
-      'button',
-      { onClick: sub },
-      '-1'
+      'ol',
+      null,
+      app.options.length > 0 ? app.options.map(function (opt) {
+        return React.createElement(
+          'li',
+          { key: opt.toString() },
+          opt
+        );
+      }) : ''
     ),
     React.createElement(
-      'button',
-      { onClick: reset },
-      'reset'
+      'form',
+      { onSubmit: onFormSubmit },
+      React.createElement('input', { type: 'text', name: 'option' }),
+      React.createElement(
+        'button',
+        null,
+        'Add Option'
+      )
     )
   );
+  var appRoot = document.getElementById('app');
   ReactDOM.render(template, appRoot);
 };
 

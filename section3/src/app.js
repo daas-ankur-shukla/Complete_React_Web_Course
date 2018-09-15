@@ -1,35 +1,38 @@
-console.log('App.js is running!');
+console.log('App.js is running');
 
-let count=0
+const app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in hands of a computer',
+  options: []
+};
 
-const add = () => {
-  count++;
+const onFormSubmit = (e) => {
+  e.preventDefault();
+  const option = e.target.elements.option.value;
+
+  if(option) {
+    app.options.push(option);
+    e.target.elements.option.value = '';
+  }
   renderApp();
-}
-
-const sub = () => {
-  count--;
-  renderApp();
-}
-
-const reset = () => {
-  count=0;
-  renderApp();
-}
-
-
-var appRoot = document.getElementById('app');
-
+};
 
 const renderApp = () => {
-  var template = (
+  const template = (
     <div>
-      <h1>Count: {count}</h1>
-      <button onClick={add}>+1</button>
-      <button onClick={sub}>-1</button>
-      <button onClick={reset}>reset</button>
+    <h1>{app.title}</h1>
+    {app.subtitle && <p>{app.subtitile}</p>}
+    <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+    <ol>
+    {app.options.length > 0 ? app.options.map((opt) => <li key={opt.toString()}>{opt}</li>) : ''}
+    </ol>
+    <form onSubmit = {onFormSubmit}>
+    <input type="text" name="option"/>
+    <button>Add Option</button>
+    </form>
     </div>
   );
+  const appRoot = document.getElementById('app');
   ReactDOM.render(template, appRoot);
 }
 
