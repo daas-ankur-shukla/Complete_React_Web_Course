@@ -20,6 +20,7 @@ const reset = () => {
 
 var appRoot = document.getElementById('app');
 
+
 const renderApp = () => {
   var template = (
     <div>
