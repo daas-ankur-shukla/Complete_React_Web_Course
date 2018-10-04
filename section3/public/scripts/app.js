@@ -1,38 +1,87 @@
 'use strict';
 
-var visibility = false;
+console.log('App.js is running');
 
-var toggleVisibility = function toggleVisibility() {
-  visibility = !visibility;
-  render();
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in hands of a computer',
+  options: []
 };
 
-var render = function render() {
-  var jsx = React.createElement(
+var onFormSubmit = function onFormSubmit(e) {
+  e.preventDefault();
+  var option = e.target.elements.option.value;
+
+  if (option) {
+    app.options.push(option);
+    e.target.elements.option.value = '';
+  }
+  renderApp();
+};
+
+var resetOptions = function resetOptions() {
+  app.options = [];
+  renderApp();
+};
+
+var onDecisionMake = function onDecisionMake() {
+  var randNumber = Math.floor(Math.random() * app.options.length);
+  alert(app.options[randNumber]);
+};
+
+var renderApp = function renderApp() {
+  var template = React.createElement(
     'div',
     null,
     React.createElement(
       'h1',
       null,
-      'Visibility Toggle'
+      app.title
+    ),
+    app.subtitle && React.createElement(
+      'p',
+      null,
+      app.subtitile
     ),
     React.createElement(
-      'button',
-      { onClick: toggleVisibility },
-      visibility ? 'Hide Details' : 'Show Details'
-    ),
-    visibility && React.createElement(
-      'div',
+      'p',
       null,
+      app.options.length > 0 ? 'Here are your ' + app.options.length + ' options' : 'No options'
+    ),
+    React.createElement(
+      'ol',
+      null,
+      app.options.length > 0 ? app.options.map(function (opt) {
+        return React.createElement(
+          'li',
+          { key: opt.toString() },
+          opt
+        );
+      }) : ''
+    ),
+    React.createElement(
+      'form',
+      { onSubmit: onFormSubmit },
+      React.createElement('input', { type: 'text', name: 'option' }),
       React.createElement(
-        'p',
+        'button',
         null,
-        'Hey. These are some details you can see'
+        'Add Option'
+      ),
+      React.createElement(
+        'button',
+        { disabled: app.options.length == 0, onClick: onDecisionMake },
+        'What Should I do?'
+      ),
+      React.createElement(
+        'button',
+        { disabled: app.options.length == 0, onClick: resetOptions },
+        'Reset'
       )
     )
   );
-
-  ReactDOM.render(jsx, document.getElementById('app'));
+  var appRoot = document.getElementById('app');
+  ReactDOM.render(template, appRoot);
 };
 
-render();
+renderApp();

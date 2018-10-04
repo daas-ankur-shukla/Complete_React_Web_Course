@@ -22,6 +22,11 @@ const resetOptions = () => {
   renderApp();
 };
 
+const onDecisionMake = () => {
+  const randNumber = Math.floor(Math.random() * app.options.length);
+  alert(app.options[randNumber]);
+}
+
 const renderApp = () => {
   const template = (
     <div>
@@ -34,7 +39,8 @@ const renderApp = () => {
     <form onSubmit = {onFormSubmit}>
     <input type="text" name="option"/>
     <button>Add Option</button>
-    <button onClick = {resetOptions}>Reset</button>
+    <button disabled={app.options.length == 0} onClick = {onDecisionMake}>What Should I do?</button>
+    <button disabled={app.options.length == 0} onClick = {resetOptions}>Reset</button>
     </form>
     </div>
   );
