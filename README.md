@@ -16,3 +16,5 @@ This repository contains the code for all the challenges given by [Andrew Mead](
 8. [Build It Visibility](https://github.com/git-ankur-shukla/Complete_React_Web_Course/commit/3be01078850635f529586af98355910f6a0d33c3#diff-82e573ecdc608593ad79b8f736b4c6f3) - Lecture 21
 
 ### Section 4
+9. [Challenge 8](https://github.com/git-ankur-shukla/Complete_React_Web_Course/commit/5c51f342222e2fbf373b80bea6c040961ac51115) - Lecture 24
+10. [Challenge 8](https://github.com/git-ankur-shukla/Complete_React_Web_Course/commit/a8f6d08d6d4631aeab605f147c62435e2af4b91e) - Lecture 25
